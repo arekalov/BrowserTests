@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Загрузка файлов</title>
+</head>
+<body>
+<h1>Скачать файлы</h1>
+<button id="downloadButton">Скачать файлы</button>
+
+<script>
+  document.getElementById('downloadButton').addEventListener('click', function() {
+    const files = [
+      'files/1.txt',
+      'files/2.txt',
+      'files/3.txt'
+    ];
+
+    files.forEach(file => {
+      const a = document.createElement('a');
+      a.href = file;
+      a.download = file.split('/').pop(); // Устанавливаем имя файла для скачивания
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a); // Убираем элемент после скачивания
+    });
+  });
+</script>
+</body>
+</html>
